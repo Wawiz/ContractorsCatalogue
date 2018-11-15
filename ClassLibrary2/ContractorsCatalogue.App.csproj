@@ -49,7 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contractors\ContractorCRUD.cs" />
+    <Compile Include="Contractors\ContractorValidator.cs" />
     <Compile Include="Interfaces\IEntityCRUD.cs" />
+    <Compile Include="Interfaces\IValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

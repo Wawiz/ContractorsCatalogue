@@ -17,9 +17,14 @@ namespace ContractorsCatalogue.App.Contractors
 
         public bool Create(Contractor newContractor)
         {
-            dbContext.Contractors.Add(newContractor);
-            dbContext.SaveChanges();
-            return true;
+            var validator = new ContractorValidator();
+            if(validator.Validate(newContractor))
+            {
+                dbContext.Contractors.Add(newContractor);
+                dbContext.SaveChanges();
+                return true;
+            }
+            return false;
         }
 
         public Contractor Get(int id)
@@ -34,6 +39,10 @@ namespace ContractorsCatalogue.App.Contractors
 
         public bool Update(Contractor contractor)
         {
+            var validator = new ContractorValidator();
+            if (!validator.Validate(contractor))
+                return false;
+
             var createdContractor = dbContext.Contractors.FirstOrDefault(c => c.Id == contractor.Id);
             if(createdContractor != null)
             {
